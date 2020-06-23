@@ -19,7 +19,7 @@ class ViewController: UIViewController {
         let member = nameTextField.text!
         
         // MARK: -   1️⃣ تحت الخط membersNamesArray إلي المصفوفه memberقم بإضافة المتغير
-        
+        membersNamesArray.append(member)
         
         
         // MARK: -   النهاية
@@ -34,13 +34,15 @@ class ViewController: UIViewController {
         
         // MARK: -  4️⃣ functionCall داخل المتغير  secretNameLetter قم باستدعاء الدالة
         
-        var functionCall = ""
+        var functionCall = secretNameLetter(memberNameArray: membersNamesArray)
         
         
         // MARK: -   النهاية
         
         
-        secretSocietyNameLabel.text =  functionCall
+       secretSocietyNameLabel.text =  functionCall
+         
+       
     }
     
     
@@ -52,12 +54,12 @@ class ViewController: UIViewController {
         
         // MARK: -  5️⃣ functionCall داخل المتغير  secretNameEmoji قم باستدعاء الدالة
         
-        var functionCall = ""
+        var functionCall = secretEmoji2(Array: membersNamesArray)
         
         // MARK: -   النهاية
         
         secretSocietyNameLabel.text =  functionCall
-        
+        functionCall.removeAll()
         
     }
     
@@ -65,6 +67,17 @@ class ViewController: UIViewController {
     
     
     // MARK: - 2️⃣ تحت هذا الخط secretNameLetter قم بكتابة الداله
+    func secretNameLetter(memberNameArray :[String])-> String
+    {var mohammed : [String] = []
+//        mohammed.removeAll()
+        for i in 0..<membersNamesArray.count{
+            mohammed.append( String(membersNamesArray[i].prefix(1)))
+           
+        }
+        print(mohammed.joined())
+         membersNamesArray.removeAll()
+        return mohammed.joined()
+    }
     
     
     // MARK: -   النهاية
@@ -74,6 +87,22 @@ class ViewController: UIViewController {
     
     
     // MARK: - 3️⃣ تحت هذا الخط secretNameEmoji قم بكتابة الداله
+    func secretEmoji2(Array: [String]) -> String{
+        var secret: String = ""
+        let emojiLetter: [String:String] =
+            ["A":"👏🏼","B":"👍🏻", "C": "😸", "D": "😀", "E": "😁", "F": "😅", "G": "🥰", "H":"😉", "I": "🦆", "J": "🇰🇼", "K": "🐍", "L": "🏅", "M": "🏅", "N": "🎲", "O": "🎥" , "P": "⏰" , "Q": "🌹", "R": "🌝", "S": "🌸", "T": "🌎", "U": "🌪", "V": "🔥", "W": "🍎", "X": "🦷", "Y": "👨🏼", "Z": "🦿"]
+        for i in Array
+        {
+            var firstletter = String(i.prefix(1))
+            
+            let emoji  = emojiLetter[firstletter] ?? ""
+            secret += emoji
+            print(secret)
+            print(firstletter)
+        }
+        
+        return secret
+    }
     
     
     // MARK: -   النهاية
